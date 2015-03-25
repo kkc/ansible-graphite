@@ -11,6 +11,10 @@
 pattern = ^carbon\.
 retentions = 60:90d
 
+[stats]
+pattern = ^stats.*
+retentions = 10s:6h,10m:7d,1d:5y
+
 [default]
 pattern = .*
-retentions = {{ graphite_storage_schemas_default_retentions }}
+retentions = 10s:14d,1m:90d,30m:1y,1h:5y
