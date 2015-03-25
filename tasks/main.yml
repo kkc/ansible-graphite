@@ -43,6 +43,16 @@
   template: src=wsgi.py.j2 dest={{ graphite_install_path }}/conf/wsgi.py
   notify: restart carbon-cache
 
+- name: Install statsd from GitHub
+  git: repo=https://github.com/etsy/statsd.git dest=/opt/statsd update=no
+
+- name: Install statsd upstart script
+  template: src=statsd_service.js.j2 dest=/etc/init/{{ service }}.conf backup=yes mode=0644
+
+- name: Install statsd
+  template: src=statsd_config.js.j2 dest={{ statsd_install_path }}/conf/config.js
+  notify: restart statsd
+
 - name: Inspect graphite db
   command: python {{ graphite_install_path }}/webapp/graphite/manage.py inspectdb
   sudo_user: "{{ graphite_user }}"

@@ -1,8 +1,12 @@
 --- 
 
+- name: Upgrade nodejs package
+  apt_repository: repo='ppa:chris-lea/node.js'
+
 - name: Install packages with apt
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=present update_cache=yes
   with_items:
+    - python-software-properties
     - python-pip
     - python-dev
     - libcairo2-dev
@@ -12,9 +16,11 @@
     - uwsgi
     - uwsgi-plugin-python
     - sudo
+    - nodejs
+    - git
 
 - name: Use the pip package, version 13
-  pip: name="Twisted==13.0" state=present
+  pip: name="Twisted==13.1" state=present
 
 - name: Install init.d script for carbon-cache
   template: src=debian_carbon_service.j2 dest=/etc/init.d/carbon-cache

@@ -1,0 +1,21 @@
+{
+  "graphitePort": 2003,
+  "graphiteHost": "127.0.0.1",
+  "address": "0.0.0.0",
+  "port": 8125,
+  "flushInterval": 10000,
+  "percentThreshold": 90,
+  "deleteIdleStats": false,
+  "deleteGauges": false,
+  "deleteTimers": false,
+  "deleteSets": false,
+  "deleteCounters": false,
+  "graphite": {
+    "legacyNamespace": true,
+    "globalPrefix": "stats",
+    "prefixCounter": "counters",
+    "prefixTimer": "timers",
+    "prefixGauge": "gauges",
+    "prefixSet": "sets"
+  }
+}

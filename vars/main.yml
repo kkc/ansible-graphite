@@ -1,3 +1,4 @@
 ---
 
 graphite_install_path: "/opt/graphite"
+statsd_install_path: "/opt/statsd"

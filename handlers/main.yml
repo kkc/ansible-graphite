@@ -5,3 +5,6 @@
 
 - name: restart uwsgi
   service: name=uwsgi state=restarted
+
+- name: restart statsd
+  service: name=statsd state=restarted
